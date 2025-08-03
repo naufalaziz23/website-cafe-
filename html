@@ -1,0 +1,569 @@
+import React, { useState } from 'react';
+import { Menu, X, MapPin, Phone, Mail, Clock, Instagram, Facebook, Twitter } from 'lucide-react';
+
+function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Navigation */}
+      <nav className="fixed w-full bg-white/95 backdrop-blur-sm shadow-lg z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <div className="flex items-center">
+              <h1 className="text-2xl font-bold text-amber-800">Kopi Nusantara</h1>
+            </div>
+            
+            {/* Desktop Menu */}
+            <div className="hidden md:block">
+              <div className="ml-10 flex items-baseline space-x-8">
+                <a href="#home" className="text-gray-800 hover:text-amber-700 px-3 py-2 font-medium transition-colors">Home</a>
+                <a href="#about" className="text-gray-800 hover:text-amber-700 px-3 py-2 font-medium transition-colors">Tentang</a>
+                <a href="#menu" className="text-gray-800 hover:text-amber-700 px-3 py-2 font-medium transition-colors">Menu</a>
+                <a href="#gallery" className="text-gray-800 hover:text-amber-700 px-3 py-2 font-medium transition-colors">Galeri</a>
+                <a href="#contact" className="text-gray-800 hover:text-amber-700 px-3 py-2 font-medium transition-colors">Kontak</a>
+              </div>
+            </div>
+
+            {/* Mobile menu button */}
+            <div className="md:hidden">
+              <button
+                onClick={toggleMenu}
+                className="text-gray-800 hover:text-amber-700 p-2"
+              >
+                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
+              <a href="#home" className="block px-3 py-2 text-gray-800 hover:text-amber-700 font-medium">Home</a>
+              <a href="#about" className="block px-3 py-2 text-gray-800 hover:text-amber-700 font-medium">Tentang</a>
+              <a href="#menu" className="block px-3 py-2 text-gray-800 hover:text-amber-700 font-medium">Menu</a>
+              <a href="#gallery" className="block px-3 py-2 text-gray-800 hover:text-amber-700 font-medium">Galeri</a>
+              <a href="#contact" className="block px-3 py-2 text-gray-800 hover:text-amber-700 font-medium">Kontak</a>
+            </div>
+          </div>
+        )}
+      </nav>
+
+      {/* Hero Section */}
+      <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
+        {/* Floating Elements */}
+        <div className="absolute top-20 left-10 w-16 h-16 bg-amber-200/30 rounded-full animate-float animate-delay-100 hidden lg:block"></div>
+        <div className="absolute top-40 right-20 w-12 h-12 bg-amber-300/20 rounded-full animate-float animate-delay-300 hidden lg:block"></div>
+        <div className="absolute bottom-32 left-20 w-20 h-20 bg-amber-100/40 rounded-full animate-float animate-delay-500 hidden lg:block"></div>
+        
+        <div 
+          className="absolute inset-0 bg-cover bg-center parallax"
+          style={{
+            backgroundImage: `url('https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')`
+          }}
+        >
+          <div className="absolute inset-0 gradient-overlay"></div>
+        </div>
+        
+        <div className="relative z-10 text-center text-white px-4">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-bounce-in">
+            Kopi Nusantara
+          </h1>
+          <div className="w-24 h-1 bg-amber-400 mx-auto mb-6 animate-scale-in animate-delay-200"></div>
+          <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto leading-relaxed animate-fade-in-up animate-delay-300">
+            Nikmati cita rasa kopi terbaik Indonesia dalam suasana yang hangat dan nyaman
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up animate-delay-500">
+            <button className="bg-amber-600 hover:bg-amber-700 text-white px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg animate-float">
+            Lihat Menu
+          </button>
+            <button className="border-2 border-white text-white hover:bg-white hover:text-amber-800 px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105">
+              Reservasi Meja
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Stats Bar */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
+            <div className="text-center animate-bounce-in animate-delay-100">
+              <div className="text-4xl font-bold text-amber-700 mb-2">15+</div>
+              <div className="text-gray-600">Tahun Pengalaman</div>
+            </div>
+            <div className="text-center animate-bounce-in animate-delay-200">
+              <div className="text-4xl font-bold text-amber-700 mb-2">50+</div>
+              <div className="text-gray-600">Varian Kopi</div>
+            </div>
+            <div className="text-center animate-bounce-in animate-delay-300">
+              <div className="text-4xl font-bold text-amber-700 mb-2">1000+</div>
+              <div className="text-gray-600">Pelanggan Puas</div>
+            </div>
+            <div className="text-center animate-bounce-in animate-delay-400">
+              <div className="text-4xl font-bold text-amber-700 mb-2">24/7</div>
+              <div className="text-gray-600">Layanan Online</div>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="animate-fade-in-left">
+              <h2 className="text-4xl font-bold text-gray-800 mb-6 animate-scale-in">Tentang Kopi Nusantara</h2>
+              <div className="w-16 h-1 bg-amber-600 mb-6 animate-scale-in animate-delay-100"></div>
+              <p className="text-lg text-gray-600 mb-6 leading-relaxed animate-fade-in-up animate-delay-200">
+                Sejak tahun 2010, Kopi Nusantara telah menjadi rumah bagi para pecinta kopi yang menghargai 
+                kualitas dan keaslian. Kami bangga menyajikan biji kopi pilihan dari berbagai daerah di Indonesia, 
+                mulai dari Aceh hingga Papua.
+              </p>
+              <p className="text-lg text-gray-600 mb-8 leading-relaxed animate-fade-in-up animate-delay-300">
+                Setiap cangkir yang kami sajikan adalah hasil dari proses yang teliti, mulai dari pemilihan 
+                biji kopi terbaik hingga teknik brewing yang sempurna. Suasana cafe yang hangat dan pelayanan 
+                yang ramah membuat setiap kunjungan menjadi pengalaman yang berkesan.
+              </p>
+              
+              {/* Features */}
+              <div className="space-y-4 animate-fade-in-up animate-delay-400">
+                <div className="flex items-center space-x-3">
+                  <div className="w-3 h-3 bg-amber-600 rounded-full"></div>
+                  <span className="text-gray-700">Biji kopi premium dari seluruh nusantara</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <div className="w-3 h-3 bg-amber-600 rounded-full"></div>
+                  <span className="text-gray-700">Barista berpengalaman dan bersertifikat</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <div className="w-3 h-3 bg-amber-600 rounded-full"></div>
+                  <span className="text-gray-700">Suasana nyaman dengan WiFi gratis</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <div className="w-3 h-3 bg-amber-600 rounded-full"></div>
+                  <span className="text-gray-700">Makanan segar dan berkualitas tinggi</span>
+                </div>
+              </div>
+            </div>
+            <div className="relative animate-fade-in-right image-zoom">
+              <img 
+                src="https://images.pexels.com/photos/1833306/pexels-photo-1833306.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                alt="Interior Cafe"
+                className="rounded-lg shadow-2xl"
+              />
+              <div className="absolute -top-4 -right-4 w-24 h-24 bg-amber-400 rounded-full flex items-center justify-center animate-float">
+                <span className="text-2xl">☕</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Menu Section */}
+      <section id="menu" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-800 mb-4 animate-scale-in">Menu Spesial Kami</h2>
+            <div className="w-24 h-1 bg-amber-600 mx-auto mb-6 animate-scale-in animate-delay-100"></div>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto animate-fade-in-up animate-delay-200">
+              Pilihan terbaik dari kopi nusantara dan makanan pendamping yang lezat
+            </p>
+          </div>
+          
+          {/* Menu Categories */}
+          <div className="flex justify-center mb-12">
+            <div className="flex space-x-4 bg-gray-100 p-2 rounded-full animate-scale-in animate-delay-300">
+              <button className="px-6 py-2 bg-amber-600 text-white rounded-full font-medium transition-all duration-300">
+                Semua Menu
+              </button>
+              <button className="px-6 py-2 text-gray-600 hover:text-amber-600 rounded-full font-medium transition-all duration-300">
+                Kopi
+              </button>
+              <button className="px-6 py-2 text-gray-600 hover:text-amber-600 rounded-full font-medium transition-all duration-300">
+                Makanan
+              </button>
+              <button className="px-6 py-2 text-gray-600 hover:text-amber-600 rounded-full font-medium transition-all duration-300">
+                Dessert
+              </button>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Coffee Menu */}
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover-lift animate-scale-in animate-delay-100 image-zoom">
+              <div className="relative">
+              <img 
+                src="https://images.pexels.com/photos/1695052/pexels-photo-1695052.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                alt="Espresso"
+                className="w-full h-48 object-cover"
+              />
+                <div className="absolute top-4 right-4 bg-amber-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                  Best Seller
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">Espresso Aceh</h3>
+                <p className="text-gray-600 mb-4">Kopi single origin dari Gayo Highland dengan rasa yang kuat dan aroma yang khas</p>
+                <div className="flex justify-between items-center">
+                  <span className="text-2xl font-bold text-amber-700">Rp 25.000</span>
+                  <button className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-lg transition-all duration-300 hover:scale-105 shadow-md">
+                    Pesan
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover-lift animate-scale-in animate-delay-200 image-zoom">
+              <div className="relative">
+              <img 
+                src="https://images.pexels.com/photos/1319461/pexels-photo-1319461.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                alt="Cappuccino"
+                className="w-full h-48 object-cover"
+              />
+                <div className="absolute top-4 right-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                  Rekomendasi
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">Cappuccino Toraja</h3>
+                <p className="text-gray-600 mb-4">Perpaduan sempurna antara espresso Toraja dan foam susu yang creamy</p>
+                <div className="flex justify-between items-center">
+                  <span className="text-2xl font-bold text-amber-700">Rp 32.000</span>
+                  <button className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-lg transition-all duration-300 hover:scale-105 shadow-md">
+                    Pesan
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover-lift animate-scale-in animate-delay-300 image-zoom">
+              <img 
+                src="https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                alt="Latte"
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">Latte Jawa</h3>
+                <p className="text-gray-600 mb-4">Kopi Jawa premium dengan steamed milk dan latte art yang indah</p>
+                <div className="flex justify-between items-center">
+                  <span className="text-2xl font-bold text-amber-700">Rp 30.000</span>
+                  <button className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-lg transition-all duration-300 hover:scale-105 shadow-md">
+                    Pesan
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover-lift animate-scale-in animate-delay-400 image-zoom">
+              <img 
+                src="https://images.pexels.com/photos/209540/pexels-photo-209540.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                alt="Croissant"
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">Croissant Butter</h3>
+                <p className="text-gray-600 mb-4">Croissant segar dengan butter premium, perfect pair untuk kopi pagi</p>
+                <div className="flex justify-between items-center">
+                  <span className="text-2xl font-bold text-amber-700">Rp 18.000</span>
+                  <button className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-lg transition-all duration-300 hover:scale-105 shadow-md">
+                    Pesan
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover-lift animate-scale-in animate-delay-500 image-zoom">
+              <img 
+                src="https://images.pexels.com/photos/1537635/pexels-photo-1537635.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                alt="Sandwich"
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">Club Sandwich</h3>
+                <p className="text-gray-600 mb-4">Sandwich lezat dengan ayam, sayuran segar, dan roti panggang</p>
+                <div className="flex justify-between items-center">
+                  <span className="text-2xl font-bold text-amber-700">Rp 35.000</span>
+                  <button className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-lg transition-all duration-300 hover:scale-105 shadow-md">
+                    Pesan
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover-lift animate-scale-in animate-delay-600 image-zoom">
+              <img 
+                src="https://images.pexels.com/photos/1386207/pexels-photo-1386207.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                alt="Dessert"
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">Tiramisu</h3>
+                <p className="text-gray-600 mb-4">Dessert Italia klasik dengan sentuhan kopi Indonesia yang khas</p>
+                <div className="flex justify-between items-center">
+                  <span className="text-2xl font-bold text-amber-700">Rp 28.000</span>
+                  <button className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-lg transition-all duration-300 hover:scale-105 shadow-md">
+                    Pesan
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery Section */}
+      <section id="gallery" className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-800 mb-4 animate-scale-in">Galeri Kopi Nusantara</h2>
+            <div className="w-24 h-1 bg-amber-600 mx-auto mb-6 animate-scale-in animate-delay-100"></div>
+            <p className="text-lg text-gray-600 animate-fade-in-up animate-delay-200">Suasana hangat dan produk berkualitas tinggi</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="relative group overflow-hidden rounded-lg animate-scale-in animate-delay-100">
+              <img 
+                src="https://images.pexels.com/photos/1833316/pexels-photo-1833316.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                alt="Coffee brewing"
+                className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 gradient-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <span className="text-white text-lg font-semibold">Coffee Brewing</span>
+              </div>
+            </div>
+            
+            <div className="relative group overflow-hidden rounded-lg animate-scale-in animate-delay-200">
+              <img 
+                src="https://images.pexels.com/photos/1833399/pexels-photo-1833399.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                alt="Coffee shop interior"
+                className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 gradient-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <span className="text-white text-lg font-semibold">Interior Design</span>
+              </div>
+            </div>
+            
+            <div className="relative group overflow-hidden rounded-lg animate-scale-in animate-delay-300">
+              <img 
+                src="https://images.pexels.com/photos/1833337/pexels-photo-1833337.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                alt="Barista making coffee"
+                className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 gradient-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <span className="text-white text-lg font-semibold">Expert Barista</span>
+              </div>
+            </div>
+            
+            <div className="relative group overflow-hidden rounded-lg animate-scale-in animate-delay-400">
+              <img 
+                src="https://images.pexels.com/photos/1833349/pexels-photo-1833349.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                alt="Coffee beans"
+                className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 gradient-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <span className="text-white text-lg font-semibold">Premium Beans</span>
+              </div>
+            </div>
+          </div>
+          
+          {/* Additional gallery row */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+            <div className="relative group overflow-hidden rounded-lg animate-scale-in animate-delay-500">
+              <img 
+                src="https://images.pexels.com/photos/1833399/pexels-photo-1833399.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                alt="Cozy seating area"
+                className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 gradient-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <span className="text-white text-lg font-semibold">Cozy Atmosphere</span>
+              </div>
+            </div>
+            
+            <div className="relative group overflow-hidden rounded-lg animate-scale-in animate-delay-600">
+              <img 
+                src="https://images.pexels.com/photos/1833306/pexels-photo-1833306.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                alt="Latte art"
+                className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 gradient-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <span className="text-white text-lg font-semibold">Latte Art</span>
+              </div>
+            </div>
+            
+            <div className="relative group overflow-hidden rounded-lg animate-scale-in animate-delay-700">
+              <img 
+                src="https://images.pexels.com/photos/1695052/pexels-photo-1695052.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                alt="Fresh pastries"
+                className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 gradient-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <span className="text-white text-lg font-semibold">Fresh Pastries</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-800 mb-4 animate-scale-in">Kunjungi Kami</h2>
+            <div className="w-24 h-1 bg-amber-600 mx-auto mb-6 animate-scale-in animate-delay-100"></div>
+            <p className="text-lg text-gray-600 animate-fade-in-up animate-delay-200">Kami siap melayani Anda dengan sepenuh hati</p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div className="animate-fade-in-left">
+              <h3 className="text-2xl font-semibold text-gray-800 mb-6 animate-scale-in">Informasi Kontak</h3>
+              
+              <div className="space-y-6">
+                <div className="flex items-start space-x-4 animate-fade-in-up animate-delay-100">
+                  <MapPin className="text-amber-600 mt-1" size={20} />
+                  <div>
+                    <h4 className="font-semibold text-gray-800">Alamat</h4>
+                    <p className="text-gray-600">Jl. Sudirman No. 123, Jakarta Pusat 10270</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-4 animate-fade-in-up animate-delay-200">
+                  <Phone className="text-amber-600 mt-1" size={20} />
+                  <div>
+                    <h4 className="font-semibold text-gray-800">Telepon</h4>
+                    <p className="text-gray-600">+62 21 1234 5678</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-4 animate-fade-in-up animate-delay-300">
+                  <Mail className="text-amber-600 mt-1" size={20} />
+                  <div>
+                    <h4 className="font-semibold text-gray-800">Email</h4>
+                    <p className="text-gray-600">info@kopinusantara.co.id</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-4 animate-fade-in-up animate-delay-400">
+                  <Clock className="text-amber-600 mt-1" size={20} />
+                  <div>
+                    <h4 className="font-semibold text-gray-800">Jam Buka</h4>
+                    <p className="text-gray-600">Senin - Minggu: 07:00 - 22:00</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8 animate-fade-in-up animate-delay-500">
+                <h4 className="font-semibold text-gray-800 mb-4">Ikuti Kami</h4>
+                <div className="flex space-x-4">
+                  <a href="#" className="text-amber-600 hover:text-amber-700 transition-all duration-300 hover:scale-110 animate-bounce-in animate-delay-600">
+                    <Instagram size={24} />
+                  </a>
+                  <a href="#" className="text-amber-600 hover:text-amber-700 transition-all duration-300 hover:scale-110 animate-bounce-in animate-delay-700">
+                    <Facebook size={24} />
+                  </a>
+                  <a href="#" className="text-amber-600 hover:text-amber-700 transition-all duration-300 hover:scale-110 animate-bounce-in animate-delay-800">
+                    <Twitter size={24} />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-gray-50 p-8 rounded-lg animate-fade-in-right">
+              <h3 className="text-2xl font-semibold text-gray-800 mb-6 animate-scale-in">Kirim Pesan</h3>
+              <p className="text-gray-600 mb-6 animate-fade-in-up animate-delay-100">
+                Ada pertanyaan atau ingin memberikan saran? Kami senang mendengar dari Anda!
+              </p>
+              <form className="space-y-6 animate-fade-in-up animate-delay-200">
+                <div className="animate-fade-in-up animate-delay-300">
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                    Nama
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
+                    placeholder="Nama Anda"
+                  />
+                </div>
+                
+                <div className="animate-fade-in-up animate-delay-400">
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
+                    placeholder="email@example.com"
+                  />
+                </div>
+                
+                <div className="animate-fade-in-up animate-delay-500">
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                    Pesan
+                  </label>
+                  <textarea
+                    id="message"
+                    rows={4}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
+                    placeholder="Tulis pesan Anda..."
+                  ></textarea>
+                </div>
+                
+                <button
+                  type="submit"
+                  className="w-full bg-amber-600 hover:bg-amber-700 text-white py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 animate-bounce-in animate-delay-600"
+                >
+                  Kirim Pesan
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-800 text-white py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+              <h3 className="text-2xl font-bold text-amber-400 mb-4">Kopi Nusantara</h3>
+              <p className="text-gray-300 leading-relaxed">
+                Cafe terbaik untuk menikmati kopi nusantara berkualitas tinggi dalam suasana yang nyaman dan ramah.
+              </p>
+            </div>
+            
+            <div>
+              <h4 className="text-lg font-semibold mb-4">Menu Populer</h4>
+              <ul className="space-y-2 text-gray-300">
+                <li><a href="#" className="hover:text-amber-400 transition-colors">Espresso Aceh</a></li>
+                <li><a href="#" className="hover:text-amber-400 transition-colors">Cappuccino Toraja</a></li>
+                <li><a href="#" className="hover:text-amber-400 transition-colors">Latte Jawa</a></li>
+                <li><a href="#" className="hover:text-amber-400 transition-colors">Club Sandwich</a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="text-lg font-semibold mb-4">Jam Operasional</h4>
+              <div className="text-gray-300 space-y-2">
+                <p>Senin - Jumat: 07:00 - 22:00</p>
+                <p>Sabtu - Minggu: 08:00 - 23:00</p>
+                <p className="text-amber-400 font-medium mt-4">Buka setiap hari!</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="border-t border-gray-700 mt-8 pt-8 text-center">
+            <p className="text-gray-400">
+              © 2024 Kopi Nusantara. Semua hak cipta dilindungi.
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+export default App;
